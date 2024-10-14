@@ -79,17 +79,15 @@ as query params.
 
 The main way to access values is `event.target.inputNameOrId.value`
 
-In HTML we link labels to inputs with the `for` attribute, but in JSX IS called
-`htmlFor`. When they are linked, clicking the label will give focus to the
-input.
-
-I learnt about `ref`. A ref is
-
-By using a ref, you ensure that:
+In HTML we link labels to inputs with the `for` attribute, but in JSX is called
+`htmlFor`. When they are linked (by input's `id`), clicking the label will give focus 
+to the input.
 
 A ref is an object that stays consistent between renders of your React
 component. It has a current property on it which can be updated to any value at
 any time.
+
+By using a ref, you ensure that:
 
 - You can store information between re-renders (unlike regular variables, which
   reset on every render).
