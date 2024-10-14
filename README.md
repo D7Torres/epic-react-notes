@@ -1,5 +1,5 @@
 # epic-react-notes
-This is a recollection of all the "Learnings" I elaborated on per the course instruction. The purpose is to have a summary of the learnings centralised so the whole course can be revised in a short reading session. This is for me, but I'm setting it as public in case somebody stumbles upon it and finds it useful.
+This is a recollection of all the "Learnings" I elaborated on per the [Epic React](https://www.epicreact.dev/) course instructions. The purpose is to have a summary of the learnings centralised so the whole course can be revised in a short reading session. This is for me, but I'm setting it as public in case somebody stumbles upon it and finds it useful.
 
 ## index
 1. [React Fundamentals](./react-fundamentals.md)
