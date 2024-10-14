@@ -1,3 +1,12 @@
+1. React Fundamentals
+2. [React Hooks](./react-hooks.md)
+3. [Advanced React Hooks](./advanced-react-hooks.md)
+4. [Advanced React Patterns](./advanced-react-patterns.md)
+5. [React Performance](./react-performance.md)
+6. [Testing React Apps](./testing-react-apps.md)
+7. [React Suspense](./react-suspense.md)
+8. [Build an Epic React App](./build-an-epic-react-app.md)
+
 # React Fundamentals
 
 ## Basic JavaScript-rendered Hello World
