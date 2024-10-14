@@ -7,7 +7,7 @@
 7. [React Suspense](./react-suspense.md)
 8. [Build an Epic React App](./build-an-epic-react-app.md)
 
-# Advanced React Patterns
+# Advanced React Hooks
 
 ## useReducer: simple Counter
 
