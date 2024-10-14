@@ -11,7 +11,18 @@
 
 ## 1. Bootstrap
 
+```javascript
+import * as React from 'react'
+import {createRoot} from 'react-dom/client'
+...
+const rootElement = document.getElementById('root')
+const root = createRoot(rootElement)
+root.render(<App />)
+```
 
+(React.createRoot did not work)
+
+Use `aria-label` in Dialogs to describe the content, for a11y purposes.
 
 ## 2. Styles
 
