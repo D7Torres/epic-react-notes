@@ -26,6 +26,57 @@ Use `aria-label` in Dialogs to describe the content, for a11y purposes.
 
 ## 2. Styles
 
+With Emotion css, this is needed
+```javascript
+/** @jsx jsx */
+import {jsx} from '@emotion/core'
+```
+
+so the `css` prop can work. Instead of transpiling something like `<div css={{...}}>` to `React.createElement('div')`, it will transpile it to `jsx('div')` which will do `React.createElement('div')` but will also take care of the `css` prop.
+
+Example of styled component with variants:
+```javascript
+const buttonVariants = {
+  primary: {
+    color: 'white',
+    background: '#3f51b5',
+  },
+  secondary: {
+    color: '#434449',
+    background: '#f1f2f7',
+  },
+}
+
+const Button = styled.button(
+  {
+    padding: '10px 15px',
+    border: '0',
+    lineHeight: '1',
+    borderRadius: '3px',
+  },
+  ({variant = 'primary'}) => buttonVariants[variant],
+)
+```
+
+To style a regular component instead of an element
+```javascript
+const StyledSpinner = styled(Spinner)({/* styles here */})
+```
+
+The `css` prop will generate a class with the component name, great for debugging, but the styled component will not. To have it for the styled component, you need to import from `styled/macro`
+
+```javascript
+import styled from '@emotion/styled/macro'
+```
+
+This will also make the components have a name without displayName set, in the React.Component devtools tab.
+
+It's a good idea to give a spinner an `aria-label="loading"`, even to give it a default prop 
+```javascript
+Spinner.defaultProps = {
+  'aria-label': 'loading'
+}
+```
 
 
 ## 3. Data fetching
