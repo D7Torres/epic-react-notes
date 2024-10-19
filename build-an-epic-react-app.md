@@ -78,14 +78,25 @@ Spinner.defaultProps = {
 }
 ```
 
-
 ## 3. Data fetching
 
-
+Copy the hook `useAsync` in this exercise to do anything async, so you don't have to manage status, data, and error states.
 
 ## 4. Authentication
 
+I found this configuration mixing example interesting. When you are mixing an object with defaults and overrides, remember that if you fear some override, you can always destructure that part (see `headers`) and have the rest with `...`. Also, if a field is there only under certain circumstances, don't be afraid of using `undefined`
 
+```javascript
+function client(endpoint, {token, headers, ...customConfig} = {}) {
+  const config = {
+    method: 'GET',
+    headers: {
+      Authorization: token ? `Bearer ${token}` : undefined,
+      ...headers,
+    },
+    ...customConfig,
+  }
+```
 
 ## 5. Routing
 
