@@ -100,7 +100,26 @@ function client(endpoint, {token, headers, ...customConfig} = {}) {
 
 ## 5. Routing
 
+With React Router, you can change the URL without reloading the browser. You can react to URL changes and render what is relevant.
 
+Example
+```javascript
+  <BrowserRouter>
+    <Routes>
+      <Route path="/discover" element={<DiscoverBooksScreen user={user} />} />
+      <Route path="/book/:bookId" element={<BookScreen user={user} />} />
+      <Route path="*" element={<NotFoundScreen />} />
+    </Routes>
+  </BrowserRouter>
+```
+Redirect:
+Often, developers will use their client-side router to redirect users, but it's not possible for the
+browser and search engines to get the proper status codes for redirect (301
+or 302) so that's *not optimal*.
+
+To *configure it in the server side*, you'll probably have to do different things for local dev (e.g. CreateReactApp), local build (e.g. serve npm module, which has a `serve.json` config) and prod (e.g. Netlify config file `_redirects`).
+
+React Router `useMatch` to know if the current URL matches something (e.g. to highlight the current nav item)
 
 ## 6. Cache management
 
