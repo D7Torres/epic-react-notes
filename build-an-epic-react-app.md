@@ -128,7 +128,11 @@ An design error is to try to have the application state (e.g. UI things are open
 So, if we are going to separate the server data, a common way is with React Query. You use `useQuery` for GETs and `useMutation` for the rest. React Query has sensible defaults for caching, retrying, etc. and a lot of flexibility.
 
 - Remember to invalidate cache in mutations if it suits your case. You can modify the cache yourself to avoid a re-fetch, but that can be bug-prone than to re-fetch and trust the source of truth (the  server)
-- In the RQ config, you can modify it to do a different number of retries. Instead of a number, you can pass a function where you can do things like: this number or retries, but if it's a 404, no retries. I'm not pasting the code because in the new version of RQ the api is very different so I'll have to research.
+- In the RQ config, you can modify it to do a different number of retries. Instead of a number, you can pass a function where you can do things like: this number or retries, but if it's a 404, no retries. I'm not pasting the code because in the new version of RQ the API is very different so I'll have to research.
+- You can prevent making calls when the page recovers focus. In many applications, this doesn't seem like a sensible default.
+
+`useMutate` returns `[mutate, state]` where `mutate` is the function you pass and `state` can be destructured in useful stuff like `{error, isError}`
+
 
 
 ## 7. Context
