@@ -123,6 +123,12 @@ React Router `useMatch` to know if the current URL matches something (e.g. to hi
 
 ## 6. Cache management
 
+An design error is to try to have the application state (e.g. UI things are open/close) and server cache state (e.g. data obtained from the server) on the same store. This tends to remove colocation, and makes things more difficult to maintain.
+
+So, if we are going to separate the server data, a common way is with React Query. You use `useQuery` for GETs and `useMutation` for the rest. React Query has sensible defaults for caching, retrying, etc. and a lot of flexibility.
+
+- Remember to invalidate cache in mutations if it suits your case. You can modify the cache yourself to avoid a re-fetch, but that can be bug-prone than to re-fetch and trust the source of truth (the  server)
+- In the RQ config, you can modify it to do a different number of retries. Instead of a number, you can pass a function where you can do things like: this number or retries, but if it's a 404, no retries. I'm not pasting the code because in the new version of RQ the api is very different so I'll have to research.
 
 
 ## 7. Context
