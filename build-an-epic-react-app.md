@@ -139,10 +139,11 @@ Sometimes, instead of invalidating a query cache, you can trigger a refetch when
 
 ## 7. Context
 
-
+N/A
 
 ## 8. Compound components
 
+If you need to reuse a piece of UI and it's not parametrised, consider storing it in a `const` instead of creating a component, and then render it wherever like `{myConst}`.
 
 
 ## 9. Performance
