@@ -145,6 +145,15 @@ N/A
 
 If you need to reuse a piece of UI and it's not parametrised, consider storing it in a `const` instead of creating a component, and then render it wherever like `{myConst}`.
 
+A key part of making compound components is inversion of control, so they are flexible enough and the user can change default behaviours. A cool abstraction to achieve it:
+```javascript
+const callAll = (...fns) => (...args) => fns.forEach(fn => fn && fn(...args))
+
+//How to use it
+return React.cloneElement(child, {
+  onClick: callAll(() => setIsOpen(true), child.props.onClick)
+})
+```
 
 ## 9. Performance
 
