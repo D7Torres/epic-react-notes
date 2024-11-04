@@ -157,7 +157,9 @@ return React.cloneElement(child, {
 
 ## 9. Performance
 
+A bigger bundle size impacts performance not only because it takes more time to be sent through the internet, but also because the browser has to process more (e.g.: parsing and running more JS). You can do code splitting with `<React.Suspense />`
 
+Remember: always measure before and after (in prod build) and choose the optimisation only if the gain is worth the extra complexity.
 
 ## 10. Render as you fetch
 
