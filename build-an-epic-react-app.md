@@ -179,11 +179,24 @@ useful to the user
 
 ## 11. Unit testing
 
+Rather than thinking about getting all your code
+covered by unit tests, think about covering your use cases.
 
+MSW
+- beforeAll: `server.listen()`
+- afterAll: `server.close()`
+- afterEach: `server.resetHandlers()`
+
+Assert a promise rejection
+```javascript
+await expect(asyncMethod()).rejects.toEqual(returnedError)
+```
+
+If you keep doing the same thing in your tests, remember jest can be configured in `jest.config.js` to have a `setupTests.js` file with those kind of repeated tasks.
 
 ## 12. Testing hooks and components
 
-
+Most should be tested via integration tests. Only test individually those hooks or components that are heavily reused.
 
 ## 13. Integration testing
 
