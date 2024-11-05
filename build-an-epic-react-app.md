@@ -196,7 +196,10 @@ If you keep doing the same thing in your tests, remember jest can be configured 
 
 ## 12. Testing hooks and components
 
-Most should be tested via integration tests. Only test individually those hooks or components that are heavily reused.
+Most should be tested via integration tests. Only test individually those hooks or components that are heavily reused or complex enough to merit some testing.
+
+[Fix the "not wrapped in act(...)" warning](https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning)
+
 
 ## 13. Integration testing
 
