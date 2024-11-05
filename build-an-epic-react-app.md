@@ -200,7 +200,6 @@ Most should be tested via integration tests. Only test individually those hooks 
 
 [Fix the "not wrapped in act(...)" warning](https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning)
 
-
 ## 13. Integration testing
 
 
