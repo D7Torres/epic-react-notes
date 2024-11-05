@@ -78,8 +78,8 @@ const helloMessage = within(messages).getByText('hello')
 🚨🚨 Checkout the Dev Tools > Elements > Accessibility tab, where you can see the
 role and name of elements.
 
-[Testing-Playground](testing-playground.com) Check which RTL queries are best to
-get elements in this sandbox.
+[Testing-Playground](www.testing-playground.com) Check which RTL queries are best to
+get elements in this sandbox. Even better, there's a Chrome extension.
 
 Use `userEvent` instead of `fireEvent` to do what the user would do. For
 example, if the user click, a lot of events will happen: mouseOver, mouseDown,
@@ -87,8 +87,6 @@ mouseUp, click, ... `userEvent` takes care to replicate all this when you do
 `await userEvent.click()`. It returns promises so remember to use `await`.
 
 ## form testing
-
-Use Testing Playground DevTool extension
 
 `screen.debug()` to check what the UI looks like after render
 
