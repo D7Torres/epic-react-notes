@@ -82,9 +82,9 @@ role and name of elements.
 get elements in this sandbox. Even better, there's a Chrome extension.
 
 Use RTL's `userEvent` instead of `fireEvent` to do what the user would do. For
-example, if the user click, a lot of events will happen: mouseOver, mouseDown,
+example, if the user clicks, a lot of events will happen: mouseOver, mouseDown,
 mouseUp, click, ... `userEvent` takes care to replicate all this when you do
-`await userEvent.click()`. It returns promises so remember to use `await`.
+`await userEvent.click()`. All these utils return promises so remember to use `await`.
 
 ## form testing
 
@@ -95,14 +95,12 @@ password inputs don't have a role for seccurity reasons, get them with
 
 Use `jest.fn()` and `toHaveBeenCalledWith()`
 
-Use `faker` to generate input which exact value is irrelevant to communicate
+Use `faker` to generate input which exact value doesn't matter to communicate
 that is irrelevant to whoever reads the test.
 
 Use `@jackfranklin/test-data-bot` to automate more data creation.
 
 ## mocking HTTP requests
-
-Elaborate
 
 Use MSW (Mock Service Worker) for that, intercepts instead of being a real
 server, more convenient as you don't have to worry about ports and you can test
@@ -110,8 +108,8 @@ fetching from other domains.
 
 `waitForElementToBeRemoved` RTL util
 
-RTL `name` in getByRole can be an input label, the content of a button, or the
-`aria-label` attribute of an element.
+**RTL `name` in getByRole can be an input label, the content of a button, or the
+`aria-label` attribute of an element.**
 
 `toBeVisible` is like `toBeInTheDocument` with extra checks like
 
@@ -187,13 +185,12 @@ await promise
 ```
 
 `act()` is needed when there is a state update that React was not expecting
-(e.g. get location promise resolves, and the calls the callback which updates
-the state). Wrapping that promis resolve in act ensures that React will flush
-all the state changes so we are not left on a pending state when proceed with
-the next assertions.
+(e.g. get location promise resolves, and then calls the callback which updates
+the state). Wrapping that promise resolve in act ensures that React will flush
+all the state changes so we are not left on a pending state when doing the next assertions.
 
-Careful defining the mockImplementations out of tests, as there are automatic
-cleanings happening before each test.
+**Be careful defining the mockImplementations out of tests, as there are automatic
+cleanings happening before each test.**
 
 Another way to test async stuff, apart of the `deferred` util above, when
 mocking a hook, is to use something async inside like `useState` and asign the
@@ -216,7 +213,7 @@ const {rerender} = render(<ComponentToTest />, {wrapper: Wrapper})
 rerender(<ComponentToTest newProp={true} />)
 ```
 
-You can create a custom render function like we did in Atom Learning so you
+You can create a custom render function like we did in Atom so you
 don't have to use `wrapper` in each test.
 
 To set it up, read
