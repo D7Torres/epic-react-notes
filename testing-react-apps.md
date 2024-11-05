@@ -78,7 +78,7 @@ const helloMessage = within(messages).getByText('hello')
 🚨🚨 Checkout the Dev Tools > Elements > Accessibility tab, where you can see the
 role and name of elements.
 
-[Testing-Playground](www.testing-playground.com) Check which RTL queries are best to
+[Testing-Playground](https://testing-playground.com) Check which RTL queries are best to
 get elements in this sandbox. Even better, there's a Chrome extension.
 
 Use `userEvent` instead of `fireEvent` to do what the user would do. For
