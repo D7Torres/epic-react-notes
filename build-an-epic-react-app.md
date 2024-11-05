@@ -157,13 +157,25 @@ return React.cloneElement(child, {
 
 ## 9. Performance
 
-A bigger bundle size impacts performance not only because it takes more time to be sent through the internet, but also because the browser has to process more (e.g.: parsing and running more JS). You can do code splitting with `<React.Suspense />`
+A bigger bundle size impacts performance not only because it takes more time to be sent through the internet, but also because the browser has to process more (e.g.: parsing and running more JS). You can do code splitting with `<React.Suspense />` and wrapping imports with `React.lazy()`.
 
 Remember: always measure before and after (in prod build) and choose the optimisation only if the gain is worth the extra complexity.
 
+Remember other common optimisations:
+- Prefetch pages/components is likely the user will see (webpack magic comments)
+- Memoize context: If a context provider re-renders with a different value from the previous render, all consumers will re-render. An object with the same values created on each render is considered a different value unless memoised.
+- Enable React Profiling tools in the prod build (`--profile` id you use CRA) so we can log into some service (think Graphana...) how long components take to mount, update..., so you can graph, and detect regressions in performance. Check the `<Profiler />` component Kent creates as a wrapper of `<React.Profiler>` which some nice utilities.
+
 ## 10. Render as you fetch
 
+Render as you fetch is all about kicking off requests for the needed code, data,
+or assets as soon as you have the information you need to retrieve them. You go
+about this by applying this process:
 
+1. Take a look at everything you're loading
+2. Determine the minimal amount of things you need to start rendering something
+useful to the user
+3. Start loading those things as soon as you possibly can
 
 ## 11. Unit testing
 
