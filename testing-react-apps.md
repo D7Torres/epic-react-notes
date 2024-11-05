@@ -75,7 +75,7 @@ const messages = document.getElementById('messages')
 const helloMessage = within(messages).getByText('hello')
 ```
 
-!! Checkout the Dev Tools > Elements > Accessibility tab, where you can see the
+🚨🚨 Checkout the Dev Tools > Elements > Accessibility tab, where you can see the
 role and name of elements.
 
 [Testing-Playground](testing-playground.com) Check which RTL queries are best to
