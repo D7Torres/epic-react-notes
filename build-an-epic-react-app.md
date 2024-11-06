@@ -192,13 +192,35 @@ Assert a promise rejection
 await expect(asyncMethod()).rejects.toEqual(returnedError)
 ```
 
-If you keep doing the same thing in your tests, remember jest can be configured in `jest.config.js` to have a `setupTests.js` file with those kind of repeated tasks.
+If you keep doing the same thing in your tests, remember jest can be configured in `jest.config.js` to have a `setupTests.js` file with that kind of repeated tasks.
 
 ## 12. Testing hooks and components
 
 Most should be tested via integration tests. Only test individually those hooks or components that are heavily reused or complex enough to merit some testing.
 
 [Fix the "not wrapped in act(...)" warning](https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning)
+
+`import '@testing-library/jest-dom'` needed in `setupTests.js` if we are going to use JSX
+
+**Remember all `userEvent` methods like `userEvent.click(...)` need `await`**
+
+**If you are ever unsure of what implicit role something has, or even its name, just do `getByRole('blah')` and jest will output a list of all the roles available in what you rendered**
+
+If, in an object you are asserting with `toEqual` you want one of the fields to be checked as being exactly  something (like if it was `toBe`). You can use `Symbol('some value')`
+
+If you want to check that no updates happen after unmounting, you can check that `console.error` is not called, as React will call console.error if updates happen when unmounted. IMPORTANT: I couldn't reproduce it, maybe in React 18 is no longer the case.
+
+---
+This doesn't work:
+```javascript
+expect(functionThatThrows()).toThrow()
+```
+You need to wrap it in a function:
+```javascript
+expect(() => functionThatThrows()).toThrow()
+```
+
+Remember: `toThrowErrorMatchingInlineSnapshot()`
 
 ## 13. Integration testing
 
