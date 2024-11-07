@@ -247,4 +247,61 @@ If you only want to print an element, you can pass it to `screen.debug()`
 screen.debug(myElement)
 ```
 
+Remember you don't neet to use waitFor just to wait for a piece of UI to appear, this works:
+```javascript
+await screen.findByLabelText(/loading/i)
+```
+
+If you have something doing anything every few seconds (like a profiler component sending the queue of render data every 5s to the server), it might be a good idea to use the `__mock__` directory to make sure is a mock component that does nothing in tests.
+
+Kent updated code in 2022 with this
+```javascript
+const fakeTimerUserEvent = userEvent.setup({
+  advanceTimers: () => jest.runOnlyPendingTimers(),
+})
+```
+And he uses that instead of `userEvent` when using `jest.useFakeTimers()`. Otherwise, you'll get avoids the "Exceeded timeout of 5000 ms for a test" error.
+
+He also added an after each to `setupTests.js` to solve some flaky tests when you use fake timers and react-query together:
+```javascript
+// real times is a good default to start, individual tests can
+// enable fake timers if they need, and if they have, then we should
+// run all the pending timers (in `act` because this can trigger state updates)
+// then we'll switch back to realTimers.
+// it's important this comes last here because jest runs afterEach callbacks
+// in reverse order and we want this to be run first so we get back to real timers
+// before any other cleanup
+afterEach(async () => {
+  // waitFor is important here. If there are queries that are being fetched at
+  // the end of the test and we continue on to the next test before waiting for
+  // them to finalize, the tests can impact each other in strange ways.
+  await waitFor(() => expect(queryCache.isFetching).toBe(0))
+  if (jest.isMockFunction(setTimeout)) {
+    act(() => jest.runOnlyPendingTimers())
+    jest.useRealTimers()
+  }
+})
+```
+
+Tip: to assert error messages, use `toMatchInlineSnapshot()`
+Tip:
+```javascript
+describe('console errors', () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+  })
+
+  afterAll(() => {
+    console.error.mockRestore()
+  })
+
+  // all tests in the describe silence errors
+  // so you can test error scenarios without the test output being polluted
+})
+```
+
 ## 14. E2e testing
+
+Writing cypress tests just changing getBy* with findBy* and mostly `findByRole` using Testing Playground extension to find out what role and name use was a breeze.
+
+Good practice, use `cy.findByRole(...).within(...)`
