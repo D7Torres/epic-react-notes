@@ -242,4 +242,9 @@ await waitForElementToBeRemoved(() => [
   ])
 ```
 
+If you only want to print an element, you can pass it to `screen.debug()`
+```javascript
+screen.debug(myElement)
+```
+
 ## 14. E2e testing
