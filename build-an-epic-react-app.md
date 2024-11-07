@@ -224,6 +224,22 @@ Remember: `toThrowErrorMatchingInlineSnapshot()`
 
 ## 13. Integration testing
 
+You'll usually need the AuthProvider mocked, but if you can reverse engineer what is happening with it, you could just mock a side effect (cookie, local storage..) the AuthProvider is relying on, to know the user is logged in.
 
+---
+
+```javascript
+waitForElementToBeRemoved(() => screen.getByLabelText('loading'))
+```
+
+**Pitfall**: if `waitForElementToBeRemoved` callback doesn't return the element, it will tell you it cannot wait for it to be removed if it's already removed.
+
+`waitForElementToBeRemoved` can accept multiple elements
+```javascript
+await waitForElementToBeRemoved(() => [
+    ...screen.queryAllByLabelText(/loading/i),
+    ...screen.queryAllByText(/loading/i),
+  ])
+```
 
 ## 14. E2e testing
