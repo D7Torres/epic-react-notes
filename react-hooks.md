@@ -79,7 +79,7 @@ of the app.
 
 You can do error handling in `then()` in a different way than with `catch`
 
-```
+```javascript
 // option 1: using .catch
 fetchPokemon(pokemonName)
   .then(pokemon => setPokemon(pokemon))
@@ -118,7 +118,7 @@ Different ways to recover from errors, like
 To manage errors that cannot get managed by `ErrorBoundary` component,
 `react-error-boundary` exposes a hook:
 
-```
+```javascript
 const { showBoundary } = useErrorBoundary()
 
 ...
