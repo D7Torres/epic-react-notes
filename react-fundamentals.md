@@ -101,7 +101,7 @@ rendering.
 
 You can pass your ref to a React element
 
-```
+```javascript
 <MyComponent ref={myRef}>
 ```
 
