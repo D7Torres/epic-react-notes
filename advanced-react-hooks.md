@@ -61,14 +61,14 @@ What does it mean composition here? https://www.youtube.com/watch?v=3XaXKiXtNjw
 Not using black-box components, have the freedom to choose which subcomponents a
 parent component will render Instead of
 
-```
+```javascript
 <Dashboard user={user} />
 {/* Dashboard renders DashboardNav and DashboardContent, which renders Dashboard Message*/}
 ```
 
 Do
 
-```
+```javascript
 <Dashboard>
   <DashboardNav />
   <DashboardContent>
