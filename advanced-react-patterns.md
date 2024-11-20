@@ -78,19 +78,19 @@ any other case.
 
 Object defaults in functions. If you have this signature
 
-```
+```javascript
 myFunc({initialOn = false, reducer = toggleReducer} = {})
 ```
 
 And you call it with nothing
 
-```
+```javascript
 myFunc()
 ```
 
 you are calling it with
 
-```
+```javascript
 myFunc({initialOn: false, reducer: toggleReducer})
 ```
 
